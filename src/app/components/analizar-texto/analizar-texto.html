@@ -1,6 +1,41 @@
+<div class="container">
+    <h1>Text Analyzer</h1>
 
-<textarea [(ngModel)]="texto"></textarea>
-<button (click)="analizar()">Analizar</button>
+    <div class="analyzer-card">
+        <div class="input-wrapper">
+            <div class="textarea-container">
+                <textarea [(ngModel)]="texto" placeholder="Comienza a escribir tu texto aquí... ✨"
+                    maxlength="5000"></textarea>
+            </div>
+            <div class="textarea-footer">
+                <div class="word-count">{{ contarPalabras() }} palabras</div>
+                <div class="char-counter" [class.warning]="texto.length > 4000" [class.danger]="texto.length > 4800">
+                    {{ texto.length }} / 5000
+                </div>
+            </div>
+        </div>
 
-<p>Insultos detectados: {{ resultado?.insultos }}</p>
-<p>Peso total: {{ resultado?.peso }}</p>
+        <button (click)="analizar()" [disabled]="!texto.trim()">
+            🚀 Analizar Ahora
+        </button>
+    </div>
+
+    <div class="results results-enter" *ngIf="resultado">
+        <div class="stat-card">
+            <div class="stat-icon">⚠️</div>
+            <div class="stat-label">Insultos</div>
+            <div class="stat-value">{{ resultado.insultos }}</div>
+        </div>
+
+        <div class="stat-card">
+            <div class="stat-icon">⚖️</div>
+            <div class="stat-label">Peso Total</div>
+            <div class="stat-value">{{ resultado.peso }}</div>
+        </div>
+    </div>
+
+    <div class="empty-state" *ngIf="!resultado && texto.trim() === ''">
+        <div class="empty-icon">📝</div>
+        <div class="empty-text">Escribe algo y presiona analizar para comenzar</div>
+    </div>
+</div>

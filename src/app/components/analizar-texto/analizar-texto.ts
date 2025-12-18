@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AnalisisService } from '../../services/analisis-texto';
@@ -13,11 +13,15 @@ export class AnalizadorComponent {
   texto = '';
   resultado?: { insultos: number; peso: number };
 
-  constructor(private analisisService: AnalisisService) {}
+  constructor(private analisisService: AnalisisService) { }
 
   analizar() {
-  this.analisisService
-    .analizarTexto(this.texto)
-    .subscribe(res => this.resultado = res);
-}
+    this.analisisService
+      .analizarTexto(this.texto)
+      .subscribe(res => this.resultado = res);
+  }
+  
+  contarPalabras(): number {
+    return this.texto.trim().split(/\s+/).filter(word => word.length > 0).length;
+  }
 }
