@@ -16,6 +16,8 @@ export class AnalizadorComponent {
   constructor(private analisisService: AnalisisService) {}
 
   analizar() {
-    this.resultado = this.analisisService.analizarTexto(this.texto);
-  }
+  this.analisisService
+    .analizarTexto(this.texto)
+    .subscribe(res => this.resultado = res);
+}
 }
