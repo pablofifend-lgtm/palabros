@@ -2,7 +2,9 @@ export interface Analizable {
   contarInsultos(): number;
   pesoTotal(): number;
 }
-
+export interface IInsultos {
+  dameInsultos(): import('rxjs').Observable<Insulto[]>;
+}
 export class Insulto {
   constructor(
     public palabra: string,
