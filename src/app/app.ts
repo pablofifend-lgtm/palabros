@@ -1,10 +1,9 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { AnalizadorComponent } from './components/analizar-texto/analizar-texto';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, AnalizadorComponent],
+  imports: [AnalizadorComponent],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
