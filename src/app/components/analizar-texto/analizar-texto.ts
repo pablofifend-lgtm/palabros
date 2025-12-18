@@ -6,7 +6,8 @@ import { AnalisisService } from '../../services/analisis-texto';
 @Component({
   selector: 'app-analizador',
   templateUrl: './analizar-texto.html',
-  imports: [FormsModule, CommonModule]
+  imports: [FormsModule, CommonModule],
+  styleUrl: './analizar-texto.css'
 })
 export class AnalizadorComponent {
   texto = '';
