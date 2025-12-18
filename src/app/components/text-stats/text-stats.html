@@ -1,0 +1,12 @@
+<div class="contenedor">
+  <textarea
+    class="input-grande"
+    placeholder="Escribe o pega tu texto aquí..."
+    [(ngModel)]="texto">
+  </textarea>
+
+  <div class="estadisticas">
+    <label>Palabras: {{ cantidadPalabras }}</label>
+    <label>Letras: {{ cantidadLetras }}</label>
+  </div>
+</div>
