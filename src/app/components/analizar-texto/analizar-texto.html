@@ -1,0 +1,6 @@
+
+<textarea [(ngModel)]="texto"></textarea>
+<button (click)="analizar()">Analizar</button>
+
+<p>Insultos detectados: {{ resultado?.insultos }}</p>
+<p>Peso total: {{ resultado?.peso }}</p>
