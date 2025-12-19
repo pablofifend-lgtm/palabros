@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 :host {
   display: block;
   min-height: 100vh;
@@ -60,6 +66,7 @@ h1::after {
 .input-wrapper {
   position: relative;
   margin-bottom: 30px;
+  width: 100%;
 }
 
 .textarea-container {
