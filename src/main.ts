@@ -1,6 +1,22 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
 import { App } from './app/app';
+import { provideHttpClient } from '@angular/common/http';
+import { provideAppInitializer } from '@angular/core';
+import { inject } from '@angular/core';
 
-bootstrapApplication(App, appConfig)
-  .catch((err) => console.error(err));
+import { DiccionarioInsultosLoaderService } from './app/services/carga-archivos';
+
+export function initDiccionario(loader: DiccionarioInsultosLoaderService) {
+  return () => loader.cargar();
+}
+
+bootstrapApplication(App, {
+  providers: [
+    provideHttpClient(),
+    DiccionarioInsultosLoaderService,
+    provideAppInitializer(() => {
+      const loader = inject(DiccionarioInsultosLoaderService);
+      return loader.cargar();
+    })
+  ]
+});
