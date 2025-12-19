@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AnalisisSimpleStrategy, AnalisisStrategy } from '../models/analizador.model';
-import { PalabrasRepositorioTexto } from './palabras-texto';
-import { InsultosRepositorioCsv } from './insultos-repositorio';
+
+import { DiccionarioInsultosLoaderService } from './carga-archivos';
 
 @Injectable({ providedIn: 'root' })
 export class AnalisisService {
@@ -9,13 +9,9 @@ export class AnalisisService {
   private strategy: AnalisisStrategy;
 
   constructor(
-    palabrasRepo: PalabrasRepositorioTexto,
-    insultosRepo: InsultosRepositorioCsv
+    loader: DiccionarioInsultosLoaderService
   ) {
-    this.strategy = new AnalisisSimpleStrategy(
-      palabrasRepo,
-      insultosRepo
-    );
+    this.strategy = new AnalisisSimpleStrategy(loader);
   }
 
   analizarTexto(texto: string) {
